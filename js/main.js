@@ -7,14 +7,19 @@ $().ready(()=>{
     $('#btnPreOrdem').click(mostrarPreOrdem);
     $('#btnPosOrdem').click(mostrarPosOrdem);
 });
-function mostrar(data){
+function mostrarItem(item){
     let el = $('#saida');
     el.empty();
-    el.append(data);
+    el.append(`<span class="ui label">${item}</span>`);
 }
+function incluir(item){
+    $('#saida').append(`<span class="ui label">${item}</span>`);
+}
+
 function inserir(){
     let num = parseInt(prompt("informe o numero a inserir na arvore:"));
-    mostrar(`<span class="ui label">${num}</span>`);
+    tree.insert(num);
+    mostrarItem('Inserido: '+num);
 }
 function buscar(){
     alert('Clicado buscar');
@@ -23,11 +28,15 @@ function remover(){
     alert('Clicado remover');
 }
 function mostrarEmOrdem(){
-    alert('Clicado mostrarEmOrdem');
+    $('#saida').empty();
+    tree.inOrderTraverse(incluir);
 }
 function mostrarPreOrdem(){
-    alert('Clicado mostrarPreOrdem');
+    $('#saida').empty();
+    tree.preOrderTraverse(incluir)
 }
 function mostrarPosOrdem(){
-    alert('Clicado mostrarPosOrdem');
+    $('#saida').empty();
+    tree.postOrderTraverse(incluir)
 }
+

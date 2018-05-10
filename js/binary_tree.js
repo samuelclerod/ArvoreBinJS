@@ -26,15 +26,37 @@ class BinaryTree{
             }
         }
     }
+
+    inOrderTraverseNode(node, callback){
+        if(node!==null){
+            this.inOrderTraverseNode(node.left, callback);
+            callback(node.content);
+            this.inOrderTraverseNode(node.right, callback);
+        }
+    }
     inOrderTraverse(callback){
-        inOrderTraverseNode(this.root, callback);
+        this.inOrderTraverseNode(this.root, callback);
     }
 
-    inOrderTraverseNode(root, callback){
-        if(root!==null){
-            this.inOrderTraverseNode(root.left, callback);
-            callback(root.content);
-            this.inOrderTraverseNode(root.right, callback);
+    preOrderTraverseNode(node, callback){
+        if(node!==null){
+            callback(node.content);
+            this.preOrderTraverseNode(node.left, callback);
+            this.preOrderTraverseNode(node.right, callback);
         }
+    }
+    preOrderTraverse(callback){
+        this.preOrderTraverseNode(this.root, callback);
+    }
+
+    postOrderTraverseNode(node, callback){
+        if(node!==null){
+            this.postOrderTraverseNode(node.left, callback);
+            this.postOrderTraverseNode(node.right, callback);
+            callback(node.content);
+        }
+    }
+    postOrderTraverse(callback){
+        this.postOrderTraverseNode(this.root, callback);
     }
 }
