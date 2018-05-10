@@ -1,4 +1,4 @@
-//let tree = new BinaryTree();
+let tree = new BinaryTree();
 $().ready(()=>{
     $('#btnInserir').click(inserir);
     $('#btnBuscar').click(buscar);
@@ -7,9 +7,14 @@ $().ready(()=>{
     $('#btnPreOrdem').click(mostrarPreOrdem);
     $('#btnPosOrdem').click(mostrarPosOrdem);
 });
-
+function mostrar(data){
+    let el = $('#saida');
+    el.empty();
+    el.append(data);
+}
 function inserir(){
-    alert('Clicado inserir');
+    let num = parseInt(prompt("informe o numero a inserir na arvore:"));
+    mostrar(`<span class="ui label">${num}</span>`);
 }
 function buscar(){
     alert('Clicado buscar');
