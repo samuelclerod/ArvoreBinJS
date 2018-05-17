@@ -2,6 +2,8 @@ let tree = new BinaryTree();
 $().ready(()=>{
     $('#btnInserir').click(inserir);
     $('#btnBuscar').click(buscar);
+    $('#btnMenor').click(menor);
+    $('#btnMaior').click(maior);
     $('#btnRemover').click(remover);
     $('#btnEmOrdem').click(mostrarEmOrdem);
     $('#btnPreOrdem').click(mostrarPreOrdem);
@@ -22,7 +24,18 @@ function inserir(){
     mostrarItem('Inserido: '+num);
 }
 function buscar(){
-    alert('Clicado buscar');
+    let num = parseInt(prompt("informe o numero a ser buscado na arvore:"));
+    if(tree.search(num)){
+        alert('Numero foi encontrado na arvore!');
+    }else{
+        alert('Numero não encontrado na arvore!');
+    }
+}
+function menor(){
+    alert('menor valor: '+tree.min());
+}
+function maior(){
+    alert('maior valor: '+tree.max());
 }
 function remover(){
     alert('Clicado remover');

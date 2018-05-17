@@ -59,4 +59,43 @@ class BinaryTree{
     postOrderTraverse(callback){
         this.postOrderTraverseNode(this.root, callback);
     }
+
+    min(){
+        let node = this.root;
+        if(node){
+            while(node.left) {
+                node=node.left;
+            }
+            return node.content;
+        }
+        return null;
+    }
+
+    max(){
+        let node = this.root;
+        if(node){
+            while(node.right) {
+                node=node.right;
+            }
+            return node.content;
+        }
+        return null;
+    }
+
+    search(value){
+        return this.searchNode(this.root, value);
+    }
+    searchNode(node, value){
+        if(node==null){
+            return false;
+        }
+        if(value>node.content){
+            return this.searchNode(node.right, value);
+        }else if(value<node.content){
+            return this.searchNode(node.left, value);
+        }else{
+            return true;
+        }
+    }
+
 }
