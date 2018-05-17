@@ -61,14 +61,15 @@ class BinaryTree{
     }
 
     min(){
-        let node = this.root;
-        if(node){
-            while(node.left) {
-                node=node.left;
-            }
-            return node.content;
-        }
+        if(this.root)
+            return this.minNode(this.root).content
         return null;
+    }
+
+    minNode(node){
+        if(node.left==null)
+            return node;
+        return this.minNode(node.left);
     }
 
     max(){
@@ -97,5 +98,31 @@ class BinaryTree{
             return true;
         }
     }
+
+    remove(value){
+        this.root = this.removeNode(this.root, value)
+    }
+    removeNode(node, value){
+        if(node==null) 
+            return null;
+        if(value>node.content){
+            node.right = this.removeNode(node.right, value);
+        }else if(value<node.content){
+            node.left = this.removeNode(node.left, value);
+        }else{
+            if(node.left==node.right){//nó folha
+                node=null;
+            }else if(node.right==null){//tem nó somente da esquerda
+                node = node.left;
+            }else if(node.left==null){//tem nó somente na direita
+                node = node.right;
+            }else{// tem nó nas duas sub-arvores
+                this.minNode(node.right).left = node.left;
+                node = node.right;
+            }
+        }
+        return node;
+    }
+
 
 }

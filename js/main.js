@@ -20,8 +20,13 @@ function incluir(item){
 
 function inserir(){
     let num = parseInt(prompt("informe o numero a inserir na arvore:"));
-    tree.insert(num);
-    mostrarItem('Inserido: '+num);
+    if(tree.search(num))
+        mostrarItem('O elemento já existe!');
+    else{
+        tree.insert(num);
+        mostrarItem('Inserido: '+num);
+    }
+       
 }
 function buscar(){
     let num = parseInt(prompt("informe o numero a ser buscado na arvore:"));
@@ -38,7 +43,13 @@ function maior(){
     alert('maior valor: '+tree.max());
 }
 function remover(){
-    alert('Clicado remover');
+    let num = parseInt(prompt("informe o numero a ser removido na arvore:"));
+    if(tree.search(num)){
+        tree.remove(num);
+        mostrarItem('O elemento foi removido!');
+    }else{
+        mostrarItem('O elemento não existe');
+    }
 }
 function mostrarEmOrdem(){
     $('#saida').empty();
