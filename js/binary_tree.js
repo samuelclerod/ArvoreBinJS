@@ -124,5 +124,25 @@ class BinaryTree{
         return node;
     }
 
+    heigth(){
+        return this.heigthNode(this.root);
+    }
+    heigthNode(node){
+        if(node==null) return -1;
+        let l=this.heigthNode(node.left),
+            r=this.heigthNode(node.right);
+        if (l>r)
+            return l+1;
+        else
+            return r+1;
+    }
+
+    size(){
+        return this.sizeNode(this.root);
+    }
+    sizeNode(node){
+        if(node==null) return 0;
+        return 1+this.sizeNode(node.left)+this.sizeNode(node.right);
+    }
 
 }

@@ -8,6 +8,8 @@ $().ready(()=>{
     $('#btnEmOrdem').click(mostrarEmOrdem);
     $('#btnPreOrdem').click(mostrarPreOrdem);
     $('#btnPosOrdem').click(mostrarPosOrdem);
+    $('#btnAltura').click(mostrarAltura);
+    $('#btnTamanho').click(mostrarTamanho);
 });
 function mostrarItem(item){
     let el = $('#saida');
@@ -63,4 +65,10 @@ function mostrarPosOrdem(){
     $('#saida').empty();
     tree.postOrderTraverse(incluir)
 }
+function mostrarAltura(){
+    alert("Altura: "+tree.heigth());
+}
 
+function mostrarTamanho(){
+    alert("Tamanho: "+tree.size());
+}
