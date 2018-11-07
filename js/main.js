@@ -14,7 +14,7 @@ $().ready(()=>{
 function mostrarItem(item){
     let el = $('#saida');
     el.empty();
-    el.append(`<span class="ui label">${item}</span>`);
+    el.append(`<span class=gitdsfsdfdsfasdf"ui label">${item}</span>`);
 }
 function incluir(item){
     $('#saida').append(`<span class="ui label">${item}</span>`);

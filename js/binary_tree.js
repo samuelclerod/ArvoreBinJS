@@ -22,7 +22,7 @@ class BinaryTree{
     }
 
     insert(element){
-        let node = new node(element);
+        let node = new Node(element);
         if(this.root===null){
             this.root = node;
         }else{
@@ -30,7 +30,16 @@ class BinaryTree{
         }
     }
 
+    inOrderTraverseNode(node, callback){
+        if(node!==null){
+            this.inOrderTraverseNode(node.left, callback);
+            callback(node.content);
+            this.inOrderTraverseNode(node.right, callback);
+        }
+    }
+
     inOrderTraverse(callback){
+        this.inOrderTraverseNode(this.root, callback);
     }
 
     preOrderTraverse(callback){
