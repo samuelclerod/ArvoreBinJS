@@ -3,6 +3,24 @@ class BinaryTree{
         this.root = null;
     }
 
+    min(){
+        if(!this.root)
+            return null;
+        let i = this.root;
+        while(i.left) 
+            i=i.left
+        return i.content;
+    }
+
+    max(){
+        if(!this.root)
+            return null;
+        let i = this.root;
+        while(i.right) 
+            i=i.right
+        return i.content;  
+    }
+
     insertNode(root, node){
         if(node.content<root.content){
             //inserir na esquerda
@@ -37,15 +55,30 @@ class BinaryTree{
             this.inOrderTraverseNode(node.right, callback);
         }
     }
-
     inOrderTraverse(callback){
         this.inOrderTraverseNode(this.root, callback);
     }
 
+    preOrderTraverseNode(node, callback){
+        if(node!==null){
+            callback(node.content);
+            this.preOrderTraverseNode(node.left, callback);
+            this.preOrderTraverseNode(node.right, callback);
+        }
+    }
     preOrderTraverse(callback){
+        this.preOrderTraverseNode(this.root, callback);
     }
 
+    postOrderTraverseNode(node, callback){
+        if(node!==null){
+            this.postOrderTraverseNode(node.left, callback);
+            this.postOrderTraverseNode(node.right, callback);
+            callback(node.content);
+        }
+    }
     postOrderTraverse(callback){
+        this.postOrderTraverseNode(this.root, callback);
     }
 
     search(value){
