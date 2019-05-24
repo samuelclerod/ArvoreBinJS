@@ -1,19 +1,38 @@
 class BinaryTree{
     // inicializa a raiz como nula
     constructor(){
-    }
-
-    //exibe o menor valor da arvore
-    min(){
-    }
-
-    //exibe o maior valor da arvore
-    max(){
+        this.root = null;
     }
 
     //insere o elemento da arvores
     insert(element){
+        this.root = this.insertNode(this.root, element);
     }
+    insertNode(rootNode, value){
+        if (rootNode==null) {
+            return new Node(value);
+        }
+        if(value>rootNode.content){
+            rootNode.right = this.insertNode(rootNode.right, value);
+        }else{
+            rootNode.left = this.insertNode(rootNode.left, value);
+        }
+        return rootNode;
+    }
+
+    //retorna true se o valor já existe na arvore
+    search(value) {
+        return this.searchNode(this.root, value);
+    }
+    searchNode(rootNode, value){
+        if (rootNode == null) return false;
+        if (rootNode.content == value) return true;
+        if (value > rootNode.content)
+            return this.searchNode(rootNode.right, value);
+        else
+            return this.searchNode(rootNode.left, value);
+    }
+
 
     //executa a função callback para cada nó, em ordem
     inOrderTraverse(callback){
@@ -25,10 +44,6 @@ class BinaryTree{
     
     //executa a função callback para cada nó, em pós-ordem
     postOrderTraverse(callback){
-    }
-
-    //retorna true se o valor já existe na arvore
-    search(value){
     }
     
     //remove um elemento existente na arvore o retorna
@@ -43,4 +58,9 @@ class BinaryTree{
     size(){
     }
 
+    //exibe o menor valor da arvore
+    min() {}
+
+    //exibe o maior valor da arvore
+    max() {}
 }
