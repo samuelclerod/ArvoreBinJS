@@ -36,6 +36,13 @@ class BinaryTree{
 
     //executa a função callback para cada nó, em ordem
     inOrderTraverse(callback){
+        this.inOrder(this.root, callback);
+    }
+    inOrder(rootNode, callback) {
+        if (rootNode == null) return;
+        this.inOrder(rootNode.left, callback);
+        callback(rootNode.content);
+        this.inOrder(rootNode.right, callback);
     }
 
     //executa a função callback para cada nó, em pré-ordem
