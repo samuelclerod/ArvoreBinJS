@@ -123,8 +123,6 @@ class BinaryTree{
         return 1 + this.sumNodes(node.left)+this.sumNodes(node.right);
     }
 
-
-
     //exibe o menor valor da arvore
     min() {
         let node = this.root;
