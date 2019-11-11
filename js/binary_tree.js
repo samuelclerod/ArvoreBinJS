@@ -4,11 +4,30 @@ class BinaryTree {
         this.root = null;
     }
 
+    templateMaxMin(fn) {
+        if (this.root) {
+            let current = this.root;
+            current = fn(current);
+            return current.content;
+        }
+        return null;
+    }
+
     //exibe o menor valor da arvore
-    min() { }
+    min() {
+        return this.templateMaxMin((c) => {
+            while (c.left) c = c.left
+            return c
+        });
+    }
 
     //exibe o maior valor da arvore
-    max() { }
+    max() {
+        return this.templateMaxMin((c) => {
+            while (c.right) c = c.right
+            return c;
+        });
+    }
 
     //insere o elemento da arvores
     insert(element) {
@@ -38,10 +57,24 @@ class BinaryTree {
 
     //executa a função callback para cada nó, em pré-ordem
     preOrderTraverse(callback) {
+        this.preOrderTraverseNode(this.root, callback);
+    }
+    preOrderTraverseNode(node, fn) {
+        if (node == null) return;
+        fn(node.content);
+        this.preOrderTraverseNode(node.left, fn);
+        this.preOrderTraverseNode(node.right, fn);
     }
 
     //executa a função callback para cada nó, em pós-ordem
     postOrderTraverse(callback) {
+        this.postOrderTraverseNode(this.root, callback);
+    }
+    postOrderTraverseNode(node, fn) {
+        if (node == null) return;
+        this.postOrderTraverseNode(node.left, fn);
+        this.postOrderTraverseNode(node.right, fn);
+        fn(node.content)
     }
 
     //retorna true se o valor já existe na arvore
@@ -62,6 +95,7 @@ class BinaryTree {
 
     //remove um elemento existente na arvore o retorna
     remove(value) {
+
     }
 
     //exibe a altura da arvore
