@@ -95,7 +95,30 @@ class BinaryTree {
 
     //remove um elemento existente na arvore o retorna
     remove(value) {
-
+        this.root = this.removeNode(this.root, value);
+    }
+    removeNode(node, value) {
+        if (!node) return null;
+        if (node.content == value) {
+            if (node.left == node.right) {
+                node = null;
+            } else if (node.left == null) {
+                node = node.right;
+            } else if (node.right == null) {
+                node = node.left;
+            } else {
+                let aux = node.right;
+                while (aux.left)
+                    aux = aux.left;
+                aux.left = node.left;
+                node = node.right
+            }
+        } else if (value < node.content) {
+            node.left = this.removeNode(node.left, value);
+        } else {
+            node.right = this.removeNode(node.right, value);
+        }
+        return node;
     }
 
     //exibe a altura da arvore
