@@ -135,11 +135,26 @@ class BinaryTree {
     }
 
     //exibe a altura da arvore
-    heigth() {
+    height() {
+        return this.heightVisitor(this.root)
+    }
+
+    heightVisitor(node) {
+        if (!node)
+            return -1
+        let leftHeight = this.heightVisitor(node.left),
+            rightHeight = this.heightVisitor(node.right)
+        return Math.max(leftHeight, rightHeight) + 1
     }
 
     // informa quantos nós existem na arvore
     size() {
+        return this.sizeVisitor(this.root)
     }
 
+    sizeVisitor(node) {
+        if (!node)
+            return 0
+        return this.sizeVisitor(node.left) + this.sizeVisitor(node.right) + 1
+    }
 }
