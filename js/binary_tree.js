@@ -48,6 +48,7 @@ class BinaryTree {
         if (node == null)
             return
         this.inOrderVisitor(node.left, callback)
+        //chama o funçao callback, que no casos é o inserir lá da interface
         callback(node.content)
         this.inOrderVisitor(node.right, callback)
     }
