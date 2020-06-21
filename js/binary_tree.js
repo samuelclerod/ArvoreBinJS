@@ -26,12 +26,6 @@ class BinaryTree {
 
     //insere o elemento da arvores
     insert(element) {
-        /* 
-         * Insere um node na arvore chamando o metodo inserteNode passando o node root
-         * que e de onde ira iniciar a insercão e passa o 
-         * elemento que sera inserido na arvore e esse metodo
-         * ira retorna a referencia do node.
-        */
         this.root = this.insertNode(this.root, element)
     }
 
@@ -76,6 +70,11 @@ class BinaryTree {
     }
 
     preOrderVisitor(node, callback) {
+        /*
+         * verifica se o node esta vazio se nao estiver este metodo ira mostra primeiro
+         * o conteudo do node
+         * depois mostrara o node esquerdo e direito
+        */
         if (node == null)
             return
         callback(node.content)
@@ -89,6 +88,10 @@ class BinaryTree {
     }
 
     postOrderVisitor(node, callback) {
+        /*
+         * verifica se o node esta vazio se nao ira mostra primeiro
+         * o node esquerdo depois o direito e o conteudo do node
+        */
         if (node == null)
             return
         this.postOrderVisitor(node.left, callback)
