@@ -26,10 +26,23 @@ class BinaryTree {
 
     //insere o elemento da arvores
     insert(element) {
+        /* 
+         * Insere um node na arvore
+         * chamando o metodo inserteNode passando o node root
+         * que e de onde ira iniciar a insercao e passa o
+         * elemento que sera inserido na arvore e esse metodo
+         * ira retorna a referencia do node.
+        */
         this.root = this.insertNode(this.root, element)
     }
 
     insertNode(rootNode, element) {
+        /*
+        * verifica se o rootNode esta null se estiver null retorna um new Node.
+        * caso ele não esteja null o segundo if faz uma comparação do element com
+        * o conteudo que esta no rootNode se for menor que o element o node será adicionado
+        * na direita da arvore no else adiciona na esquerda.
+        */
         if (rootNode == null)
             return new Node(element)
         if (element > rootNode.content)
