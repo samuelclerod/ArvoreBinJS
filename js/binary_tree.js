@@ -122,6 +122,11 @@ class BinaryTree {
     }
 
     searchVisitor(node, element) {
+        /*
+         * verifica os elementos da arvore e se o node é null retorna false
+         * depois está verificando se o conteudo do node e igual ao element se for retorna true
+         * caso o node não for null e nao tiver valores iguais ele ira bucar ou na direita ou na esquerda
+        */
         if (node == null)
             return false
         if (node.content == element)
@@ -138,6 +143,12 @@ class BinaryTree {
     }
 
     removeVisitor(node, value) {
+        /*
+         * se os valores são iguais ele ira olhar se tem algum filho caso tenha  
+         * sera verificado se a direita e nula se for nula significa que so tem a esquerda
+         * caso contrario verifica se a esquerda é nula se for significa que so tem a direita
+         * caso a direita ou esquerda não for nula e porque tem filhos
+        */
         if (node.content == value) {
             if (node.left == node.right) {
                 //nao tem filhos - Grau 0
@@ -158,8 +169,10 @@ class BinaryTree {
                 return newRoot;
             }
         } else if (value < node.content) {
+            // remove o no da esquerda
             node.left = this.removeVisitor(node.left, value)
         } else {
+            // remove o no da direita
             node.right = this.removeVisitor(node.right, value)
         }
         return node;
