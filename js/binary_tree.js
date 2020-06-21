@@ -27,9 +27,8 @@ class BinaryTree {
     //insere o elemento da arvores
     insert(element) {
         /* 
-         * Insere um node na arvore
-         * chamando o metodo inserteNode passando o node root
-         * que e de onde ira iniciar a insercão e passa o
+         * Insere um node na arvore chamando o metodo inserteNode passando o node root
+         * que e de onde ira iniciar a insercão e passa o 
          * elemento que sera inserido na arvore e esse metodo
          * ira retorna a referencia do node.
         */
