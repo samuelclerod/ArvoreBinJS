@@ -6,6 +6,11 @@ class BinaryTree {
 
     //exibe o menor valor da arvore
     min() {
+        /*
+         * recebe o node atual verifica se esta null se não estiver
+         * ira percorre toda a esquera do node e quando a proxima posição
+         * for null ele ira mostrar o conteudo do node
+        */
         let current = this.root
         if (current == null)
             return null
@@ -16,6 +21,11 @@ class BinaryTree {
 
     //exibe o maior valor da arvore
     max() {
+        /*
+         * recebe o node atual verifica se esta null se não estiver
+         * ira percorre toda a direita do node e quando a proxima posição
+         * for null ele ira mostrar o conteudo do node
+        */
         let current = this.root
         if (current == null)
             return null
