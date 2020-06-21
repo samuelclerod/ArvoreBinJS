@@ -51,7 +51,7 @@ class BinaryTree {
             rootNode.left = this.insertNode(rootNode.left, element)
         return rootNode
     }
-
+ 
     //executa a função callback para cada nó, em ordem
     inOrderTraverse(callback) {
         this.inOrderVisitor(this.root, callback)
