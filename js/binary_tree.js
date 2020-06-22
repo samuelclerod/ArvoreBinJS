@@ -161,18 +161,23 @@ class BinaryTree {
                 return node.right
             } else {
                 // tem os dois ramos - Grau 2
+                /*
+                 * caso o root seja removido sera criado um novo node a parti do node da direita
+                 * logo apos, todos os node da esquerda serão percorridos ate que o null seja encontrado
+                 * quando o null for encontrado o node atual receberar todos nos do antigo node.
+                */
                 const newRoot = node.right
-                let current = node.right;
+                let current = node.right
                 while (current.left != null)
                     current = current.left
                 current.left = node.left
                 return newRoot;
             }
         } else if (value < node.content) {
-            // remove o no da esquerda
+            // remove o node da esquerda
             node.left = this.removeVisitor(node.left, value)
         } else {
-            // remove o no da direita
+            // remove o node da direita
             node.right = this.removeVisitor(node.right, value)
         }
         return node;
