@@ -1,5 +1,5 @@
 let tree = new BinaryTree();
-$().ready(()=>{
+$().ready(() => {
     $('#btnInserir').click(inserir);
     $('#btnBuscar').click(buscar);
     $('#btnMenor').click(menor);
@@ -11,64 +11,64 @@ $().ready(()=>{
     $('#btnAltura').click(mostrarAltura);
     $('#btnTamanho').click(mostrarTamanho);
 });
-function mostrarItem(item){
+function mostrarItem(item) {
     let el = $('#saida');
     el.empty();
     el.append(`<span class=gitdsfsdfdsfasdf"ui label">${item}</span>`);
 }
-function incluir(item){
+function incluir(item) {
     $('#saida').append(`<span class="ui label">${item}</span>`);
 }
 
-function inserir(){
+function inserir() {
     let num = parseInt(prompt("informe o numero a inserir na arvore:"));
-    if(tree.search(num))
+    if (tree.search(num))
         mostrarItem('O elemento já existe!');
-    else{
+    else {
         tree.insert(num);
-        mostrarItem('Inserido: '+num);
+        mostrarItem('Inserido: ' + num);
     }
-       
+
 }
-function buscar(){
+function buscar() {
     let num = parseInt(prompt("informe o numero a ser buscado na arvore:"));
-    if(tree.search(num)){
+    if (tree.search(num)) {
         alert('Numero foi encontrado na arvore!');
-    }else{
+    } else {
         alert('Numero não encontrado na arvore!');
     }
 }
-function menor(){
-    alert('menor valor: '+tree.min());
+function menor() {
+    alert('menor valor: ' + tree.min());
 }
-function maior(){
-    alert('maior valor: '+tree.max());
+function maior() {
+    alert('maior valor: ' + tree.max());
 }
-function remover(){
+function remover() {
     let num = parseInt(prompt("informe o numero a ser removido na arvore:"));
-    if(tree.search(num)){
+    if (tree.search(num)) {
         tree.remove(num);
         mostrarItem('O elemento foi removido!');
-    }else{
+    } else {
         mostrarItem('O elemento não existe');
     }
 }
-function mostrarEmOrdem(){
+function mostrarEmOrdem() {
     $('#saida').empty();
     tree.inOrderTraverse(incluir);
 }
-function mostrarPreOrdem(){
+function mostrarPreOrdem() {
     $('#saida').empty();
     tree.preOrderTraverse(incluir)
 }
-function mostrarPosOrdem(){
+function mostrarPosOrdem() {
     $('#saida').empty();
     tree.postOrderTraverse(incluir)
 }
-function mostrarAltura(){
-    alert("Altura: "+tree.heigth());
+function mostrarAltura() {
+    alert("Altura: " + tree.heigth());
 }
 
-function mostrarTamanho(){
-    alert("Tamanho: "+tree.size());
+function mostrarTamanho() {
+    alert("Tamanho: " + tree.size());
 }
