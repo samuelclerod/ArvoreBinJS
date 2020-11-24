@@ -123,8 +123,21 @@ class BinaryTree {
     }
 
     //exibe a altura da arvore
-    heigth() {
+    height() {
+        return this.recursiveHeight(this.root);
+    }
 
+    recursiveHeight(node) {
+        if (!node) {
+            return -1;
+        }
+        const sizeOfLeft = this.recursiveHeight(node.left);
+        const sizeOfRight = this.recursiveHeight(node.right);
+        if (sizeOfLeft > sizeOfRight) {
+            return 1 + sizeOfLeft;
+        } else {
+            return 1 + sizeOfRight
+        }
     }
 
     // informa quantos nós existem na arvore

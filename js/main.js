@@ -66,7 +66,7 @@ function mostrarPosOrdem() {
     tree.postOrderTraverse(incluir)
 }
 function mostrarAltura() {
-    alert("Altura: " + tree.heigth());
+    alert("Altura: " + tree.height());
 }
 
 function mostrarTamanho() {
