@@ -19,12 +19,10 @@ class BinaryTree {
         return node
     }
 
-    //TODO executa a função callback para cada nó, em ordem
+    //DONE executa a função callback para cada nó, em ordem
     inOrderTraverse(callback) {
         this.inOrderRecursive(this.root, callback)
     }
-
-    //left content right
     inOrderRecursive(node, cb) {
         if (!node) return;
         this.inOrderRecursive(node.left, cb);
@@ -32,15 +30,29 @@ class BinaryTree {
         this.inOrderRecursive(node.right, cb)
     }
 
-    //TODO executa a função callback para cada nó, em pré-ordem
+    //DONE executa a função callback para cada nó, em pré-ordem
     preOrderTraverse(callback) {
+        this.preOrderRecursive(this.root, callback)
+    }
+    preOrderRecursive(node, cb) {
+        if (!node) return;
+        cb(node.content);
+        this.preOrderRecursive(node.left, cb);
+        this.preOrderRecursive(node.right, cb);
     }
 
-    //TODO executa a função callback para cada nó, em pós-ordem
+    //DONE executa a função callback para cada nó, em pós-ordem
     postOrderTraverse(callback) {
+        this.postOrderRecursive(this.root, callback)
+    }
+    postOrderRecursive(node, cb) {
+        if (!node) return;
+        this.postOrderRecursive(node.left, cb);
+        this.postOrderRecursive(node.right, cb);
+        cb(node.content)
     }
 
-    //TODO retorna true se o valor já existe na arvore
+    //DONE retorna true se o valor já existe na arvore
     search(value) {
         return this.recursiveSearch(this.root, value);
     }
@@ -55,24 +67,79 @@ class BinaryTree {
         return this.recursiveSearch(node.right, value)
     }
 
-    //TODO remove um elemento existente na arvore o retorna
+    //DOING remove um elemento existente na arvore o retorna
     remove(value) {
+        this.root = this.removeRecursive(this.root, value);
     }
+
+    removeRecursive(node, value) {
+        if (!node) throw new Error("Nó não existe");
+        if (node.content === value) {
+            if (node.left === node.right) {
+                node = null;
+            } else if (node.left === null) {
+                node = node.right;
+            } else if (node.right === null) {
+                node = node.left
+            } else {
+                let aux = node.right;
+                while (aux.left) {
+                    aux = aux.left
+                }
+                aux.left = node.left
+                node = node.right;
+            }
+        } else if (value < node.content) {
+            node.left = this.removeRecursive(node.left, value);
+        } else {
+            node.right = this.removeRecursive(node.right, value);
+        }
+
+        return node;
+    }
+
 
     //TODO exibe o menor valor da arvore
     min() {
+        let selected = this.root;
+        while (selected.left) {
+            selected = selected.left;
+        }
+        return selected.content;
     }
 
     //TODO exibe o maior valor da arvore
     max() {
+        let selected = this.root;
+        while (selected.right) {
+            selected = selected.right;
+        }
+        return selected.content;
     }
 
     //TODO exibe a altura da arvore
     heigth() {
+        return this.root;
+    }
+
+    recursiveHeigth(node) {
+        if (!node) return -1;
+        const left = this.recursiveHeigth(node.left);
+        const right = this.recursiveHeigth(node.right);
+        if (left > right) {
+            return left + 1;
+        } else {
+            return right + 1;
+        }
     }
 
     //TODO informa quantos nós existem na arvore
     size() {
+        let counter = 0;
+        this.inOrderTraverse((value) => {
+            counter++;
+        })
+        return counter;
     }
 
 }
