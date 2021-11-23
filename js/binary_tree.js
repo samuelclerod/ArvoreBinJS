@@ -104,7 +104,19 @@ class BinaryTree {
   }
 
   //exibe a altura da arvore
-  height() { }
+  height() {
+    return this._height(this.root)
+  }
+  _height(node) {
+    if (node === null) return -1;
+    const left = this._height(node.left);
+    const right = this._height(node.right);
+    if (left > right) {
+      return left + 1;
+    } else {
+      return right + 1;
+    }
+  }
 
   // informa quantos nós existem na arvore
   size() {
@@ -134,8 +146,6 @@ class BinaryTree {
     return current.content;
   }
 }
-
-
 
 var validations = [
   isNaN,
